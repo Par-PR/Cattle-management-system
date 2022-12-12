@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 
-MERCHANT_KEY = ''
+MERCHANT_KEY = 'Enter Your merchant Key'
 
 LOGIN_REDIRECT_URL='/'
 

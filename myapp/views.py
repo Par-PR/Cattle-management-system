@@ -280,7 +280,7 @@ def registrationcheck(request):
         
         param_dict = {
 
-            'MID': 'OvhfNE13656302390739',
+            'MID': 'Enter Your merchant ID',
             'ORDER_ID': str(order.registration_id),
             'TXN_AMOUNT': str(amount),
             'CUST_ID': email,
