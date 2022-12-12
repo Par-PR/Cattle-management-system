@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cattle</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <link rel="icon" href="/static/img/cattlelogo.webp" type="image" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background: #555;
+        
+      }
+
+      .best {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body class="opacity-0.75 ">
+    
+    {% for msg in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <div>
+          <a class="navbar-brand text-success" href="/">
+            <img
+              src="/static/img/cattlelogo.webp"
+              alt="Logo"
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top rounded"
+            />
+            Cattle
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-info" aria-current="page" href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-info"
+                aria-current="page"
+                href="/about"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-info"
+                aria-current="page"
+                href="/contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a class="btn btn-outline-success" href="/signin">Signin</a>
+      <a class="btn btn-outline-success mx-2" href="/signup">Signup</a>
+      
+
+    </nav>
+    <div class="best">
+      <center><h2 class="my-5">Signin user </h2></center>
+      <div class="container form-control bg-light my-5">
+      <form method="post">
+        {% csrf_token %}
+        <select
+          class="form-select forn-control mb-3"
+          name="cname"
+          aria-label="Default select example"
+        >
+          <option selected>select who are you</option>
+          <option value="buyer" name="buyer">Buyer</option>
+          <option value="seller" name="seller">seller</option>
+        </select>
+        <div class="mb-3 form-control">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3 form-control">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            name='password'
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">signin</button>
+          <a class="btn btn-success" href="admin">Admin login</a>
+          <a class="btn btn-danger"  href="{% provider_login_url "google" method="js_sdk" %}">Gmail login</a>
+          <div >
+            <a class="btn btn-outline-success" href="/resetpassword">Forgot passage</a>
+          </div>
+
+        </div>
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
